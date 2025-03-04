@@ -26,15 +26,15 @@ const handleResponse = (response) => {
 };
 
 const handleResponseError = async (error) => {
-  console.log('🚀 ~ handleResponseError ~ error:', error?.response?.status);
   //xử lý khi token hết hạn
   console.log('error axios', error);
   if (error.response?.status === 401) {
     const dispatch = store.dispatch;
     dispatch(resetLogin());
     // Xóa token khỏi localStorage
-    // localStorage.removeItem('access_token');
-    window.location.href = '/';
+    localStorage.removeItem('access_token');
+
+    // window.location.href = '/';
     return;
   }
 

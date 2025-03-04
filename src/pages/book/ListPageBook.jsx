@@ -1,5 +1,5 @@
-import { Box, Button, Grid, IconButton, Modal, Paper, TextField } from '@mui/material';
-import React, { memo, useState } from 'react';
+import { IconButton, Paper } from '@mui/material';
+import React, { memo } from 'react';
 import StyledDataGrid from 'components/table/StyledDataGrid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -30,14 +30,58 @@ function ListPageBook() {
       })
       .finally(() => {
       });
+
+    const columns = [
+      { field: 'id', headerName: 'ID' },
+      {
+        field: 'firstName',
+        headerName: 'First name',
+        flex: 1,
+        textAlign: 'center'
+      },
+      { field: 'lastName', headerName: 'Last name', flex: 1, textAlign: 'center' },
+      {
+        field: 'age',
+        headerName: 'Age',
+        type: 'number',
+        flex: 1,
+        textAlign: 'center'
+      },
+      {
+        field: 'fullName',
+        headerName: 'Full name',
+        description: 'This column has a value getter and is not sortable.',
+        sortable: false,
+        flex: 1,
+        textAlign: 'center',
+        valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`
+      },
+      {
+        field: 'actions',
+        headerName: 'Hành động',
+        sortable: false,
+        flex: 1,
+        textAlign: 'center',
+        renderCell: (params) => (
+          <>
+            {/* <Tooltip title="Chỉnh sửa"> */}
+            <IconButton color="primary" size="small" onClick={() => handleEdit(params.row)}>
+              <EditIcon />
+            </IconButton>
+            {/* </Tooltip> */}
+            {/* <Tooltip title="Xóa"> */}
+            <IconButton color="error" size="small" onClick={() => handleDelete(params.row.id)}>
+              <DeleteIcon />
+            </IconButton>
+            {/* </Tooltip> */}
+          </>
+        )
+      }
+    ];
   };
 
-  useEffect(() => {
-    handleListBook();
-  }, []); // Chỉ gọi 1 lần khi component mount
-  const handleEdit = (book) => {
-    setSelectedBook(book);
-    setOpenModal(true);
+  const handleDelete = (id) => {
+    console.log('Xóa ID:', id);
   };
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -212,5 +256,7 @@ function ListPageBook() {
     </>
   );
 };
+
+
 
 export default memo(ListPageBook);

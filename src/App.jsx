@@ -16,6 +16,7 @@ export default function App() {
   const getToken = useSelector(getTokenState);
   const token = getToken || localStorage.getItem('access_token');
   const { infoAuth } = useAuthToken(token);
+
   const routes = useMemo(() => {
     if (!token) return AuthRoutes;
 
