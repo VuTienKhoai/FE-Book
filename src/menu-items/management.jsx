@@ -36,6 +36,30 @@ const management = {
       url: '/user-management',
       icon: icons.ChromeOutlined,
       requiredRole: ADMIN
+    },
+    {
+      id: 'banner-management',
+      title: 'Quản lý banner',
+      type: 'item',
+      url: '/banner-management',
+      icon: icons.ChromeOutlined,
+      requiredRole: ADMIN
+    },
+    {
+      id: 'order-management',
+      title: 'Quản lý đơn hàng',
+      type: 'item',
+      url: '/order-management',
+      icon: icons.ChromeOutlined,
+      requiredRole: ADMIN
+    },
+    {
+      id: 'cart-management',
+      title: 'Quản lý giỏ hàng',
+      type: 'item',
+      url: '/cart-management',
+      icon: icons.ChromeOutlined,
+      requiredRole: ADMIN
     }
   ]
 };
