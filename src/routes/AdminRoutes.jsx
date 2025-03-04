@@ -14,6 +14,8 @@ const PageUser = Loadable(lazy(() => import('pages/user/ManagementUser')));
 const PageBanner = Loadable(lazy(() => import('pages/banner/BannerManagement')));
 const PageOrder = Loadable(lazy(() => import('pages/order/OrderManagement')));
 const PageCart = Loadable(lazy(() => import('pages/cart/CartManagement')));
+const AddBook = Loadable(lazy(() => import('pages/book/addbook/AddBook')));
+
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')));
 
@@ -75,6 +77,10 @@ const MainRoutes = {
     {
       path: 'cart-management',
       element: <PageCart />
+    },
+    {
+      path: 'add-book',
+      element: <AddBook />
     }
   ]
 };
