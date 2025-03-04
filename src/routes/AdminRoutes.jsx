@@ -10,7 +10,6 @@ const Shadow = Loadable(lazy(() => import('pages/component-overview/shadows')));
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/index')));
 const PageBook = Loadable(lazy(() => import('pages/book/PageBook')));
 const PagePost = Loadable(lazy(() => import('pages/postManagement/PostManagement')));
-const AddBook = Loadable(lazy(() => import('pages/book/addbook/AddBook')));
 const PageUser = Loadable(lazy(() => import('pages/user/ManagementUser')));
 const PageBanner = Loadable(lazy(() => import('pages/banner/BannerManagement')));
 const PageOrder = Loadable(lazy(() => import('pages/order/OrderManagement')));
@@ -75,9 +74,7 @@ const MainRoutes = {
     },
     {
       path: 'cart-management',
-      element: <PageCart />,
-      path: 'add-book',
-      element: <AddBook />
+      element: <PageCart />
     }
   ]
 };
