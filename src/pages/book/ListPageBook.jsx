@@ -8,31 +8,6 @@ import { useEffect } from 'react';
 import { showToast } from 'components/notification/CustomToast';
 import { formatPrice } from './../../utils/format/FormatPrice';
 import { ListBook } from './services/book.api';
-
-
-
-
-// const rows = [
-//   { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-//   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-//   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-//   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-//   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-//   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-//   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-//   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-//   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 11, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 12, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 13, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 14, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 15, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 16, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   { id: 17, lastName: 'Roxie', firstName: 'Harvey', age: 65 }
-// ];
-
-const paginationModel = { page: 0, pageSize: 10 };
 function ListPageBook() {
   const [books, setBooks] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -51,7 +26,7 @@ function ListPageBook() {
       })
       .catch((error) => {
         console.error('Lỗi đăng ký:', error);
-        // showToast('Có lỗi xảy ra' + error, 'error');
+        showToast('Có lỗi xảy ra' + error, 'error');
       })
       .finally(() => {
       });
@@ -151,8 +126,6 @@ function ListPageBook() {
         ) : null;
       },
     },
-
-
     {
       field: 'actions',
       headerName: 'Hành động',
@@ -195,22 +168,22 @@ function ListPageBook() {
           {selectedBook && (
             <Grid container spacing={2}>
               <Grid item xs={6}>
-                <TextField fullWidth label="Tên sách" variant="outlined" value={selectedBook.name} sx={{ mb: 2 }} />
+                <TextField fullWidth label="Tên sách" variant="outlined" value={selectedBook.name} onChange={(e) => setSelectedBook(prev => ({ ...prev, name: e.target.value }))} sx={{ mb: 2 }} />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth label="Giá" variant="outlined" value={selectedBook.price} sx={{ mb: 2 }} />
+                <TextField fullWidth label="Giá" variant="outlined" value={selectedBook.price} onChange={(e) => setSelectedBook(prev => ({ ...prev, price: e.target.value }))} sx={{ mb: 2 }} />
               </Grid>
               <Grid item xs={12}>
-                <TextField fullWidth label="Mô tả" variant="outlined" value={selectedBook.description} sx={{ mb: 2 }} />
+                <TextField fullWidth label="Mô tả" variant="outlined" value={selectedBook.description} onChange={(e) => setSelectedBook(prev => ({ ...prev, description: e.target.value }))} sx={{ mb: 2 }} />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth label="Tác giả" variant="outlined" value={selectedBook.author} sx={{ mb: 2 }} />
+                <TextField fullWidth label="Tác giả" variant="outlined" value={selectedBook.author} onChange={(e) => setSelectedBook(prev => ({ ...prev, author: e.target.value }))} sx={{ mb: 2 }} />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth label="Nhà xuất bản" variant="outlined" value={selectedBook.publisher} sx={{ mb: 2 }} />
+                <TextField fullWidth label="Nhà xuất bản" variant="outlined" value={selectedBook.publisher} onChange={(e) => setSelectedBook(prev => ({ ...prev, publisher: e.target.value }))} sx={{ mb: 2 }} />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth label="Số lượng" type="number" variant="outlined" value={selectedBook.qty} sx={{ mb: 2 }} />
+                <TextField fullWidth label="Số lượng" type="number" variant="outlined" value={selectedBook.qty} onChange={(e) => setSelectedBook(prev => ({ ...prev, qty: e.target.value }))} sx={{ mb: 2 }} />
               </Grid>
               <Grid item xs={6}>
                 <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
